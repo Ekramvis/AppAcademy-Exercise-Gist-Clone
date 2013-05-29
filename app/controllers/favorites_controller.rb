@@ -8,9 +8,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    user = User.find_by_session_token(cookies["session_token"])
-    gist = Gist.find(params[:id])
-    Favorite.where(user_id: user.id, gist_id: gist.id)[0].destroy
+    Favorite.find(params[:id]).destroy
   end
 
 end

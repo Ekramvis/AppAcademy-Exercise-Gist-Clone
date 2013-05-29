@@ -7,7 +7,7 @@ GistApp::Application.routes.draw do
     end
   end
 
-  resources :favorites, only: [:index]
+  resources :favorites, only: [:index, :destroy]
   resources :users
 
   root to: "gists#index"
