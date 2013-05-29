@@ -12,4 +12,5 @@ class GistsController < ApplicationController
       format.json { render json: @gists }
     end
   end
+
 end

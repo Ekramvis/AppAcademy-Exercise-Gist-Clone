@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require backbone-rails
 //= require backbone-forms
-//= require gist
+//= require gist_app
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./routers

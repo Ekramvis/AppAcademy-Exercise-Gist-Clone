@@ -1,0 +1,11 @@
+<div id="main"></div>
+
+<script type="text/javascript">
+  var allGists = <%= @gists.to_json.html_safe %>
+  var $main = $('#main')
+
+  $(function() {
+    console.log("rails view gist/show");
+    window.G.initialize(allGists, $main);
+  });
+</script>
