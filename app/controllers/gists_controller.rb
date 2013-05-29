@@ -15,6 +15,7 @@ class GistsController < ApplicationController
 
   def new
     @gist = Gist.new
+    @gist.gist_files.build
   end
 
   def create
