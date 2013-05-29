@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
     if @user
       @user.session_token = SecureRandom.hex
       @user.save
-      cookies[:session_token] = @user.session_token
-      redirect_to :root_url
+      cookies["session_token"] = @user.session_token
+      redirect_to root_url
       #flash
     else
       #flash error
