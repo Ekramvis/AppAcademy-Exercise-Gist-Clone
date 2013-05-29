@@ -3,11 +3,11 @@ GistApp::Application.routes.draw do
 
   resources :gists do
     member do
-      resource :favorite, only: [:create, :destroy]
+      resource :favorite, only: [:create]
     end
   end
 
-  resources :favorites, only: [:index, :destroy]
+  resources :favorites, only: [:index, :destroy, :create]
   resources :users
 
   root to: "gists#index"

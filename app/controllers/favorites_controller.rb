@@ -1,14 +1,16 @@
 class FavoritesController < ApplicationController
+  respond_to :json
+
   before_filter :require_login
 
   def create
-    gist = Gist.find(params[:id])
-    user = User.find_by_session_token(cookies["session_token"])
-    Favorite.create!(gist_id: gist.id, user_id: user.id)
+    @favorite = Favorite.create!(gist_id: params[:gist_id], user_id: params[:user_id])
+    render json: @favorite
   end
 
   def destroy
-    Favorite.find(params[:id]).destroy
+    @favorite = Favorite.find(params[:id]).destroy
+    render json: @favorite
   end
 
 end

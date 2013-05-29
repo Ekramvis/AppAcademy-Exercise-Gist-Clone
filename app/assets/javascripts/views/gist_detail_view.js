@@ -6,13 +6,14 @@ G.Views.GistDetailView = Backbone.View.extend({
 
   initialize: function () {
     var that = this;
+    var favorites = that.options.user.favorites;
+
     that.checkFav = function () {
       var that = this;
-      var favorites = that.options.user.favorites;
       var ids = _.pluck(favorites, 'gist_id');
 
       return _.contains(ids, that.model.id);
-    }
+    };
   },
 
   render: function () {
@@ -29,26 +30,35 @@ G.Views.GistDetailView = Backbone.View.extend({
 
   unFavorite: function () {
     var that = this;
-
     var favorites = that.options.user.favorites;
-
 
     var favorite = _.find(favorites, function(fav){
       return fav.gist_id === that.model.id
     })
 
     var a = new G.Models.Favorite(favorite);
-    console.log(that.model.id);
 
     a.destroy({success: function () {
-       Backbone.history.navigate("#/gists/" + that.model.id);
+       console.log("unfavorite");
+       that.render();
+       Backbone.history.navigate("#/gists/" + that.model.id, {trigger: true});
     }});
-  }
+  },
 
-  // favoriteGist: function () {
- //    if (checkFav) {
- //
- //    }
- //  }
+  favoriteGist: function () {
+    var that = this;
+
+    var newFav = new G.Models.Favorite({
+      user_id: that.options.user.id,
+      gist_id: that.model.id
+    });
+
+    newFav.save({}, {success: function () {
+       console.log("favorite");
+       that.render();
+       Backbone.history.navigate("#/gists/" + that.model.id, {trigger: true});
+      }
+    });
+  }
 
 });
