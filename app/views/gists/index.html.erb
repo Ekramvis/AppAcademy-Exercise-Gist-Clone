@@ -3,9 +3,10 @@
 <script type="text/javascript">
   var allGists = <%= @gists.to_json.html_safe %>
   var $main = $('#main')
+  var userID = <%= User.find_by_session_token(cookies["session_token"]).id %>
 
   $(function() {
     console.log("rails view gist/show");
-    window.G.initialize(allGists, $main);
+    window.G.initialize(allGists, $main, userID);
   });
 </script>
