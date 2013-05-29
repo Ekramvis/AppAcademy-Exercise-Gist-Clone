@@ -40,7 +40,6 @@ G.Views.GistDetailView = Backbone.View.extend({
 
     a.destroy({success: function () {
        console.log("unfavorite");
-       that.render();
        Backbone.history.navigate("#/gists/" + that.model.id, {trigger: true});
     }});
   },
@@ -55,7 +54,6 @@ G.Views.GistDetailView = Backbone.View.extend({
 
     newFav.save({}, {success: function () {
        console.log("favorite");
-       that.render();
        Backbone.history.navigate("#/gists/" + that.model.id, {trigger: true});
       }
     });

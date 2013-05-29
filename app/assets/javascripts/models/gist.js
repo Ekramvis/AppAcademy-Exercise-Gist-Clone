@@ -1,3 +1,7 @@
 G.Models.Gist = Backbone.Model.extend({
-  urlRoot: "/gists"
-})
+  urlRoot: "/gists",
+
+  schema: {
+    title: 'Text'
+  }
+});

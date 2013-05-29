@@ -13,4 +13,13 @@ class GistsController < ApplicationController
     end
   end
 
+  def new
+    @gist = Gist.new
+  end
+
+  def create
+    @gist = Gist.new(params[:gist])
+    @gist.save
+    redirect_to root_url
+  end
 end

@@ -6,7 +6,6 @@
   var user = <%= User.includes(:favorites).find_by_session_token(cookies["session_token"]).to_json(include: :favorites).html_safe %>
 
   $(function() {
-    console.log("rails view gist/show");
     window.G.initialize(allGists, $main, user);
   });
 </script>

@@ -1,5 +1,6 @@
 G.Routers.GistsRouter = Backbone.Router.extend({
   routes: {
+    "gists/new" : "newForm",
     "gists/:id" : "show"
   },
 
@@ -18,11 +19,16 @@ G.Routers.GistsRouter = Backbone.Router.extend({
       model: selectedGist,
       user: that.user
     });
-    //
-    // var favButtonView = new G.Views.FavButtonView({
-    //   model:
-    // })
-
     that.$content.html(gistDetailView.render().$el);
+  },
+
+  newForm: function () {
+    var that = this;
+
+    var newGistFormView = new G.Views.NewGistFormView({
+      user: that.user
+    });
+
+    that.$content.html(newGistFormView.render().$el);
   }
 });
