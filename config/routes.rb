@@ -1,6 +1,13 @@
 GistApp::Application.routes.draw do
-  resource :session
-  resources :gists
+  resource :session, only: [:new, :create, :destroy]
+
+  resources :gists do
+    member do
+      resource :favorite, only: [:create, :destroy]
+    end
+  end
+
+  resources :favorites, only: [:index]
   resources :users
 
   root to: "gists#index"
