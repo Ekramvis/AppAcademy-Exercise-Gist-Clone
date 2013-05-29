@@ -3,11 +3,11 @@ G.Routers.GistsRouter = Backbone.Router.extend({
     "gists/:id" : "show"
   },
 
-  initialize: function (gistCollection, content, userID) {
+  initialize: function (gistCollection, content, user) {
     var that = this;
     that.gistCollection = gistCollection;
     that.$content = content;
-    that.userID = userID;
+    that.user = user;
   },
 
   show: function (id) {
@@ -16,7 +16,7 @@ G.Routers.GistsRouter = Backbone.Router.extend({
 
     var gistDetailView = new G.Views.GistDetailView({
       model: selectedGist,
-      id: that.userID
+      user: that.user
     });
     //
     // var favButtonView = new G.Views.FavButtonView({

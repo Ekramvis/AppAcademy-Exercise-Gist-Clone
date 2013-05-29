@@ -7,8 +7,7 @@ G.Views.GistDetailView = Backbone.View.extend({
     var that = this;
 
     var renderedContent = JST["gists/view"]({
-      gist: that.model,
-      userID: that.id
+      gist: that.model
     });
 
     that.$el.html(renderedContent);
@@ -17,8 +16,9 @@ G.Views.GistDetailView = Backbone.View.extend({
 
   checkFav: function () {
     var that = this;
-    var userID = that.id
+    var favorites = that.options.user.favorites
+    var ids = _.pluck(favorites, 'gist_id')
 
-    if
+    _.contains(ids, that.model.id)
   }
 });
