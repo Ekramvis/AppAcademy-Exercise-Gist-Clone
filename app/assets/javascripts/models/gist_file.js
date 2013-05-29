@@ -6,6 +6,6 @@ G.Models.GistFile = Backbone.RelationalModel.extend({
   },
 
   toJSON : function(){
-    return {"gist": _.clone(this.attributes)};
-  },
+    return {"gist_file": _.clone(this.attributes)};
+  }  
 })
