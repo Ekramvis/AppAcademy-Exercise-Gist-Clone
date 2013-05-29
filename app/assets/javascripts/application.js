@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require backbone-rails
-//= require rails-backbone-forms
+//= require backbone-forms
 //= require gist
 //= require_tree ./models
 //= require_tree ./collections
