@@ -7,5 +7,5 @@ class Gist < ActiveRecord::Base
   has_many :favorites
   has_many :gist_files, inverse_of: :gist
 
-  accepts_nested_attributes_for :gist_files, reject_if: lambda { |gf| gf.empty? }
+  accepts_nested_attributes_for :gist_files, reject_if: lambda { |attributes| attributes["body"].empty? }
 end
