@@ -25,6 +25,7 @@ gem 'backbone-rails'
 gem 'rails-backbone-forms'
 gem 'backbone-relational-rails'
 gem 'ejs'
+gem 'bootstrap-sass'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
