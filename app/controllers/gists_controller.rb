@@ -15,7 +15,9 @@ class GistsController < ApplicationController
 
   def new
     @gist = Gist.new
-    @gist.gist_files.build
+    3.times do
+      @gist.gist_files.build
+    end
   end
 
   def create
