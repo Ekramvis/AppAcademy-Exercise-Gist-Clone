@@ -1,4 +1,6 @@
 class GistFilesController < ApplicationController
+  respond_to :json
+
   def new
     @gistfile = GistFile.new
   end

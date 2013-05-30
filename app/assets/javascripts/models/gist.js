@@ -6,9 +6,10 @@ G.Models.Gist = Backbone.RelationalModel.extend({
   },
 
   relations: [{
-    type: Backbone.HasOne,
-    key: "gist_file",
+    type: Backbone.HasMany,
+    key: "gist_files",
     relatedModel: "G.Models.GistFile",
+    collectionType: "G.Collections.GistFiles",
     reverseRelation: {
       key: "gist_id"
     }

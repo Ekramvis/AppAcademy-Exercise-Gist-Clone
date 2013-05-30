@@ -3,18 +3,11 @@ G.Views.NewGistFormView = Backbone.View.extend({
     var that = this;
     that.user_id = user.id;
     that.newGist = new G.Models.Gist;
+    that.newGistFile = new G.Models.GistFile;
 
     that.gistForm = new Backbone.Form({
       model: that.newGist
     }).render();
-
-    that.newGistFile = new G.Models.GistFile;
-
-    that.gistFileForm = new Backbone.Form({
-      model: that.newGistFile
-    }).render();
-
-    that.gistForm.$el.append(that.gistFileForm.$el)
   },
 
   events: {
@@ -23,8 +16,12 @@ G.Views.NewGistFormView = Backbone.View.extend({
 
   render: function () {
     var that = this;
+    var gistFileFormView = new G.Views.NewGistFileFormView({
+      model: that.newGistFile
+    }).render();
 
     that.$el.html(that.gistForm.$el);
+    that.$el.append(gistFileFormView.$el);
     that.$el.append("<button id='submit-gist'>Submit</button>");
     return that;
   },
@@ -36,7 +33,5 @@ G.Views.NewGistFormView = Backbone.View.extend({
     that.gistFileForm.commit();
     that.newGist.attributes.user_id = that.user_id;
     that.newGist.save();
-    that.newGistFile.attributes.gist_id = that.newGist.id;
-    that.newGistFile.save();
   }
 })
